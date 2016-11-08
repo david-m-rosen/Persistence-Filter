@@ -44,13 +44,13 @@ target_link_libraries(persistence_filter_test persistence_filter persistence_fil
 
 #BOOST PYTHON STUFF GOES HERE!!!
 
-find_package(Boost 1.45.0)
+find_package(Boost)
 IF(Boost_FOUND)
   include_directories("${Boost_INCLUDE_DIRS}" "/usr/include/python2.7")
   SET(Boost_USE_STATIC_LIBS OFF)
   SET(Boost_USE_MULTITHREADED ON)
   SET(Boost_USE_STATIC_RUNTIME OFF)
-  find_package(Boost 1.45.0 COMPONENTS python)
+  find_package(Boost COMPONENTS python)
 
   # Build the Python persistence_filter_utils library
   add_library(python_persistence_filter_utils SHARED python/python_persistence_filter_utils.cc)

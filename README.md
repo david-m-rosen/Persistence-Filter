@@ -18,6 +18,6 @@ year = 2016,
 
 ### Copyright and License
 
-The C++ and Python implementations of the Persistence Filter contained herein are copyright (C) 2016 by David M. Rosen, and are distributed under the terms of the GNU General Public License (GPL) version 3 (or later).  Please see the files LICENSE.txt and COPYING.txt for more information.
+The C++ and Python implementations of the Persistence Filter contained herein are copyright (C) 2016 by David M. Rosen, and are distributed under the terms of the GNU General Public License (GPL) version 3 (or later).  Please see the file LICENSE for more information.
 
-Contact: dmrosen@mit.edu
+Contact: drosen2000@gmail.com

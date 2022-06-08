@@ -22,7 +22,21 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 
-set(GSL_LIB_DEPENDS gsl gslcblas m)
+
+if (APPLE)
+  set(GSL_LIB_DEPENDS
+    /usr/local/lib/libgsl.a
+    /usr/local/lib/libgslcblas.a
+    m
+  )
+else()
+  set(GSL_LIB_DEPENDS
+    gsl
+    gslcblas
+    m
+)
+endif()
+
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/c++/include)
 
@@ -31,10 +45,14 @@ add_library(persistence_filter_utils SHARED
 	${CMAKE_CURRENT_LIST_DIR}/c++/src/persistence_filter_utils.cc
 )
 
+target_link_libraries(persistence_filter_utils
+  ${GSL_LIB_DEPENDS}
+)
+
 add_library(persistence_filter SHARED ${CMAKE_CURRENT_LIST_DIR}/c++/src/persistence_filter.cc)
 target_link_libraries(persistence_filter
-  persistence_filter_utils
   ${GSL_LIB_DEPENDS}
+  persistence_filter_utils
 )
 
 
@@ -46,7 +64,12 @@ target_link_libraries(persistence_filter_test persistence_filter persistence_fil
 
 find_package(Boost)
 IF(Boost_FOUND)
-  include_directories("${Boost_INCLUDE_DIRS}" "/usr/include/python2.7")
+  if (APPLE)
+    include_directories("${Boost_INCLUDE_DIRS}" "/usr/include/python2.7")
+  else()
+    include_directories("${Boost_INCLUDE_DIRS}" "/usr/include/python2.7")
+  endif()
+    
   SET(Boost_USE_STATIC_LIBS OFF)
   SET(Boost_USE_MULTITHREADED ON)
   SET(Boost_USE_STATIC_RUNTIME OFF)

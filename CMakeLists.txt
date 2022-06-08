@@ -15,8 +15,6 @@ ENDIF(CMAKE_BUILD_TYPE MATCHES RELEASE)
 
 project(PersistenceFilter)
 
-message (STATUS "${CMAKE_CXX_COMPILER_ID}")
-
 if(CMAKE_COMPILER_IS_GNUCXX)
     message(STATUS "GNUCXX")
     add_definitions(-std=gnu++0x)  # Tell the compiler to compile with C++11 

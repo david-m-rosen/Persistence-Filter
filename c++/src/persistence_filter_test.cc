@@ -17,7 +17,7 @@ double P_F = .01;
 
 std::function<double(double)> logS_T = std::bind(log_general_purpose_survival_function, std::placeholders::_1, lambda_l, lambda_u);
 
-auto S_T = [=](double t) { return gsl_sf_exp(logS_T(t)); };
+auto S_T = [](double t) { return gsl_sf_exp(logS_T(t)); };
 
 int main(int argc, char* argv[])
 {
